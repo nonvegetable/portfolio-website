@@ -6,13 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function initTyped() {
         typed = new Typed('#typed-text', {
             strings: [
-                'Pokemon Enthusiast 🌟',
-                'Aspiring Code Wizard ☕',
-                'Tech Enthusiast',
-                'Curious Learner 🔍',
-                'Problem Solver in Training 🐛',
-                'Future Keyboard Warrior ⌨️',
-                'Stack Overflow Explorer 🏆'
+                'Football Tactician ⚽',
+                'Code Adventurer 💻',
+                'History Buff 🏛️',
+                'Geography Explorer 🌍',
+                'One Piece Pirate at Heart 🏴‍☠️',
+                'Guitar Strummer 🎸',
+                'Future Tech Innovator 🚀',
+                'Curious Mind Always Learning 🔍'
             ],
             typeSpeed: 50,
             backSpeed: 30,

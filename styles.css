@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;700&display=swap');
 
 :root {
     --primary-color: #FF6B6B;
@@ -17,10 +17,11 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--background-color);
+    font-size: 18px;
 }
 
 a {
@@ -38,12 +39,14 @@ a:hover {
     width: 100%;
     height: 100%;
     z-index: -1;
+    top: 0;
+    left: 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     width: 100%;
 }
 
@@ -55,13 +58,13 @@ a:hover {
 }
 
 .section {
-    padding: 80px 0;
+    padding: 120px 0;
 }
 
 .mega-text {
-    font-size: 4rem;
+    font-size: 6rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     line-height: 1.2;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color-1), var(--accent-color-2));
     -webkit-background-clip: text;
@@ -72,9 +75,9 @@ a:hover {
 }
 
 .medium-text {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: var(--secondary-color);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .highlight {
@@ -82,8 +85,8 @@ a:hover {
 }
 
 .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
+    font-size: 4rem;
+    margin-bottom: 60px;
     text-align: center;
     background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
@@ -92,18 +95,22 @@ a:hover {
 }
 
 .fun-facts-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .fun-fact {
     background-color: var(--card-background);
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%; /* Controls the width; you can adjust this as needed */
+    margin: 0 auto;
 }
 
 .fun-fact:hover {
@@ -112,13 +119,13 @@ a:hover {
 }
 
 .fun-fact p {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
 }
 
 .project-card {
@@ -136,7 +143,7 @@ a:hover {
 }
 
 .card-content {
-    padding: 30px;
+    padding: 40px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -144,24 +151,25 @@ a:hover {
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
     color: var(--primary-color);
 }
 
 .project-card p {
-    font-size: 1rem;
-    margin-bottom: 20px;
+    font-size: 1.4rem;
+    margin-bottom: 30px;
 }
 
 .github-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 30px;
     background-color: var(--primary-color);
     color: #ffffff;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-size: 1.2rem;
 }
 
 .github-button:hover {
@@ -170,7 +178,7 @@ a:hover {
 
 .contact-content {
     text-align: center;
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -178,15 +186,15 @@ a:hover {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 30px;
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .contact-button {
     display: inline-flex;
     align-items: center;
-    padding: 12px 24px;
-    font-size: 1rem;
+    padding: 20px 40px;
+    font-size: 1.4rem;
     text-decoration: none;
     color: #ffffff;
     background-color: var(--primary-color);
@@ -200,49 +208,51 @@ a:hover {
 }
 
 .contact-button i {
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 .contact-joke {
-    margin-top: 30px;
+    margin-top: 40px;
     font-style: italic;
     color: var(--text-color);
     opacity: 0.8;
+    font-size: 1.4rem;
 }
 
 .future-projects-note {
     text-align: center;
-    font-size: 1rem;
-    margin-top: 40px;
+    font-size: 1.4rem;
+    margin-top: 60px;
     color: var(--secondary-color);
 }
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
 }
 
 .skill-category {
     background-color: var(--card-background);
     border-radius: 15px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .skill-category h3 {
     color: var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
+    font-size: 2rem;
 }
 
 .skill-list {
     list-style-type: none;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
 }
 
 .skill-list li {
@@ -250,26 +260,27 @@ a:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-size: 1.2rem;
 }
 
 .skill-list li i {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 3rem;
+    margin-bottom: 15px;
     color: var(--secondary-color);
 }
 
 .skills-intro {
     text-align: center;
-    font-size: 1rem;
-    margin-bottom: 30px;
+    font-size: 1.4rem;
+    margin-bottom: 50px;
     color: var(--text-color);
 }
 
 .experience-container {
     position: relative;
-    max-width: 1000px;
-    margin: 60px auto 0;
-    padding: 20px;
+    max-width: 1200px;
+    margin: 80px auto 0;
+    padding: 30px;
 }
 
 .experience-trail {
@@ -277,18 +288,18 @@ a:hover {
     top: 0;
     bottom: 0;
     left: 50%;
-    width: 4px;
+    width: 6px;
     background: var(--secondary-color);
     transform: translateX(-50%);
 }
 
 .experience-card {
     position: relative;
-    width: calc(50% - 30px);
-    margin-bottom: 50px;
+    width: calc(50% - 40px);
+    margin-bottom: 70px;
     background-color: var(--card-background);
     border-radius: 15px;
-    padding: 25px;
+    padding: 35px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -301,16 +312,16 @@ a:hover {
 .experience-card::before {
     content: '';
     position: absolute;
-    top: 20px;
-    width: 20px;
-    height: 20px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
     background: var(--primary-color);
-    border: 4px solid var(--secondary-color);
+    border: 6px solid var(--secondary-color);
     border-radius: 50%;
 }
 
 .experience-card:nth-child(even) {
-    left: calc(50% + 30px);
+    left: calc(50% + 40px);
 }
 
 .experience-card:nth-child(odd) {
@@ -318,23 +329,24 @@ a:hover {
 }
 
 .experience-card:nth-child(odd)::before {
-    right: -40px;
+    right: -55px;
 }
 
 .experience-card:nth-child(even)::before {
-    left: -40px;
+    left: -55px;
 }
 
 .experience-card h3 {
     color: var(--primary-color);
-    margin-bottom: 10px;
-    font-size: 1.4rem;
+    margin-bottom: 15px;
+    font-size: 2rem;
 }
 
 .experience-card .company {
     font-weight: bold;
     color: var(--secondary-color);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
 }
 
 .experience-card .duration,
@@ -342,26 +354,28 @@ a:hover {
     font-style: italic;
     color: var(--text-color);
     opacity: 0.8;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
 }
 
 .experience-card .description {
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 1.4rem;
 }
 
 .experience-card .skills {
-    margin-top: 15px;
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
 }
 
 .experience-card .skill-tag {
     background-color: var(--primary-color);
     color: var(--background-color);
-    padding: 4px 8px;
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -378,53 +392,64 @@ a:hover {
     }
     
     .section {
-        padding: 60px 0;
+        padding: 100px 0;
+    }
+
+    .mega-text {
+        font-size: 5rem;
+    }
+
+    .section-title {
+        font-size: 3.5rem;
     }
 }
 
 @media (max-width: 992px) {
     .mega-text {
-        font-size: 3rem;
+        font-size: 4rem;
     }
 
-    .section-title {
+    .medium-text {
         font-size: 2rem;
     }
 
+    .section-title {
+        font-size: 3rem;
+    }
+
     .skills-container {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     
-    .timeline::after {
-        left: 31px;
+    .experience-container {
+        padding-left: 40px;
     }
 
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
+    .experience-trail {
+        left: 40px;
     }
 
-    .timeline-item::after {
-        left: 15px;
+    .experience-card {
+        width: calc(100% - 80px);
+        left: 40px !important;
     }
 
-    .timeline-item:nth-child(even) {
-        left: 0%;
+    .experience-card::before {
+        left: -55px !important;
     }
 }
 
 @media (max-width: 768px) {
     .mega-text {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
     }
 
     .medium-text {
-        font-size: 1.25rem;
+        font-size: 1.8rem;
     }
 
     .section-title {
-        font-size: 1.75rem;
+        font-size: 2.5rem;
     }
 
     .fun-facts-container,
@@ -433,11 +458,64 @@ a:hover {
     }
     
     .section {
-        padding: 40px 0;
+        padding: 80px 0;
     }
 
     .experience-container {
-        padding-left: 50px;
+        padding-left: 30px;
+    }
+
+    .experience-trail {
+        left: 30px;
+    }
+
+    .experience-card {
+        width: calc(100% - 60px);
+        left: 30px !important;
+        padding: 25px;
+    }
+
+    .experience-card::before {
+        left: -45px !important;
+    }
+
+    .fun-fact p,
+    .project-card p,
+    .contact-button,
+    .skills-intro,
+    .experience-card .description {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mega-text {
+        font-size: 3rem;
+    }
+
+    .medium-text {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .contact-button {
+        padding: 15px 30px;
+        font-size: 1.1rem;
+    }
+
+    .skill-category {
+        padding: 25px;
+    }
+
+    .skill-list {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+
+    .experience-container {
+        padding-left: 20px;
     }
 
     .experience-trail {
@@ -446,97 +524,14 @@ a:hover {
 
     .experience-card {
         width: calc(100% - 40px);
-        left: 40px !important;
+        left: 20px !important;
+        padding: 20px;
     }
 
     .experience-card::before {
-        left: -50px !important;
-        right: auto !important;
-    }
-}
-
-@media (max-width: 576px) {
-    .mega-text {
-        font-size: 2rem;
-    }
-
-    .medium-text {
-        font-size: 1rem;
-    }
-
-    .section-title {
-        font-size: 1.5rem;
-    }
-
-    .contact-button {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    .skill-category {
-        padding: 15px;
-    }
-
-    .skill-list {
-        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-    }
-
-    .timeline-content {
-        padding: 15px 20px;
-    }
-}
-
-/* Additional styles to reduce blank space and improve layout */
-.full-screen {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 0;
-}
-
-#about,
-#experience,
-#skills,
-#projects,
-#contact {
-    min-height: auto;
-    padding: 80px 0;
-}
-
-.timeline {
-    margin-top: 40px;
-}
-
-.timeline-item {
-    margin-bottom: 30px;
-}
-
-.timeline-content {
-    background-color: var(--card-background);
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-
-@media (min-width: 993px) {
-    .timeline-item:nth-child(odd) .timeline-content {
-        margin-right: 30px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 30px;
-    }
-}
-
-@media (max-width: 992px) {
-    .timeline-content {
-        margin-left: 60px;
+        left: -35px !important;
+        width: 20px;
+        height: 20px;
+        border-width: 4px;
     }
 }
