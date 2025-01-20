@@ -379,6 +379,30 @@ a:hover {
     font-weight: bold;
 }
 
+.hackathon-location {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.hackathon-achievement {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.hackathon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
 @keyframes gradient {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -484,6 +508,24 @@ a:hover {
     .contact-button,
     .skills-intro,
     .experience-card .description {
+        font-size: 1.2rem;
+    }
+
+    .hackathon-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hackathon-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .hackathon-header h3 {
+        font-size: 1.8rem;
+    }
+
+    .hackathon-card p {
         font-size: 1.2rem;
     }
 }
