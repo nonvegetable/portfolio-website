@@ -183,16 +183,17 @@ a:hover {
 .github-button {
   display: inline-block;
   padding: 15px 30px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color-1);
   color: var(--text-color);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s ease;
   font-size: 1.2rem;
 }
 
 .github-button:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--accent-color-2);
+  color: var(--text-color);
 }
 
 .contact-content {
