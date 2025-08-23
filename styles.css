@@ -30,7 +30,7 @@ body {
 }
 
 .name {
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: 700;
   letter-spacing: 2px;
   margin-bottom: 10px;
@@ -38,20 +38,20 @@ body {
 }
 
 .year {
-  font-size: 48px;
+  font-size: 2rem;
   font-weight: 300;
   margin: 20px 0;
 } 
 
 .location {
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
 .college {
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -59,7 +59,7 @@ body {
 }
 
 .title {
-  font-size: 16px;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -84,7 +84,7 @@ body {
 }
 
 .section-title {
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -117,7 +117,7 @@ body {
 .item-title {
   display: block;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 1rem;
   letter-spacing: 0.5px;
   font-weight: 500;
   margin-bottom: 4px;
@@ -125,7 +125,7 @@ body {
 
 .item-desc {
   display: block;
-  font-size: 11px;
+  font-size: 0.75rem;
   text-transform: none;
   letter-spacing: 0.2px;
   opacity: 0.8;
@@ -154,7 +154,7 @@ body {
 .social-link {
   color: #333;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.2s ease;
@@ -377,6 +377,33 @@ body::before {
 .social-link:focus {
   outline: 2px solid #333;
   outline-offset: 2px;
+}
+
+/* Universal link reset for project links & social links */
+a:link,
+a:visited,
+a:active {
+  color: inherit;          /* matches parent text color */
+  text-decoration: none;   /* removes underline */
+}
+
+a:hover {
+  color: #333;             /* or pick an accent color */
+  text-decoration: underline; /* optional hover effect */
+}
+
+/* Specific styling for social links */
+.social-link:link,
+.social-link:visited,
+.social-link:active {
+  color: #333;             /* keep them consistent */
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background-color: #333;
+  color: #f5f5f0;
+  text-decoration: none;   /* no underline on hover */
 }
 
 /* Print styles */
