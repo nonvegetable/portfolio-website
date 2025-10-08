@@ -29,6 +29,14 @@ body {
   padding-bottom: 40px;
 }
 
+.logo {
+  display: block;
+  margin: 20px auto 0 auto; /* center horizontally and add top spacing */
+  max-width: 25rem; /* desktop size similar to .asterisk */
+  width: 100%;
+  height: auto;
+}
+
 .name {
   font-size: 2rem;
   font-weight: 700;
@@ -244,6 +252,11 @@ body {
     font-size: 80px;
     margin: 30px 0;
   }
+
+  /* Logo responsive size for tablet */
+  .logo {
+    max-width: 80px;
+  }
   
   .section-title {
     font-size: 18px;
@@ -295,6 +308,11 @@ body {
   .asterisk {
     font-size: 60px;
     margin: 20px 0;
+  }
+
+  /* Logo responsive size for small/mobile */
+  .logo {
+    max-width: 60px;
   }
   
   .social-links {
