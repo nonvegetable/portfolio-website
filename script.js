@@ -1,4 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Custom cursor functionality
+  const cursor = document.querySelector('.custom-cursor');
+  
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  
+  // Change cursor color based on hover elements
+  const interactiveElements = document.querySelectorAll('.list-item, .social-link, a');
+  
+  interactiveElements.forEach(element => {
+    element.addEventListener('mouseenter', () => {
+      // Check if element has dark background on hover
+      const bgColor = window.getComputedStyle(element).backgroundColor;
+      if (bgColor === 'rgb(51, 51, 51)' || element.matches(':hover')) {
+        cursor.classList.add('inverted');
+      }
+      cursor.style.transform = 'translate(-50%, -50%) scale(1.5)'; // Slightly larger on hover
+    });
+    
+    element.addEventListener('mouseleave', () => {
+      cursor.classList.remove('inverted');
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  });
+
   // Smooth fade in animation
   document.body.style.opacity = '0';
   setTimeout(() => {
@@ -39,52 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, index * 50); // Reduced delay for smoother animation with more items
   });
   
-  // Add hover sound effect (optional - requires user interaction)
-  // const addHoverSound = () => {
-  //   try {
-  //     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      
-  //     listItems.forEach(item => {
-  //       item.addEventListener('mouseenter', () => {
-  //         // Create a subtle beep sound
-  //         const oscillator = audioContext.createOscillator();
-  //         const gainNode = audioContext.createGain();
-          
-  //         oscillator.connect(gainNode);
-  //         gainNode.connect(audioContext.destination);
-          
-  //         oscillator.frequency.value = 800;
-  //         oscillator.type = 'sine';
-          
-  //         gainNode.gain.setValueAtTime(0, audioContext.currentTime);
-  //         gainNode.gain.linearRampToValueAtTime(0.01, audioContext.currentTime + 0.01);
-  //         gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
-          
-  //         oscillator.start(audioContext.currentTime);
-  //         oscillator.stop(audioContext.currentTime + 0.1);
-  //       });
-  //     });
-  //   } catch (e) {
-  //     console.log('Audio context not supported');
-  //   }
-  // };
-  
-  // Enable sound on first user interaction
-  // document.addEventListener('click', addHoverSound, { once: true });
-  
-  // // Add subtle animation to section titles
-  // const sectionTitles = document.querySelectorAll('.section-title');
-  // sectionTitles.forEach((title) => {
-  //   title.addEventListener('mouseenter', () => {
-  //     title.style.letterSpacing = '2px';
-  //     title.style.transition = 'letter-spacing 0.3s ease';
-  //   });
-    
-  //   title.addEventListener('mouseleave', () => {
-  //     title.style.letterSpacing = '1px';
-  //   });
-  // });
-  
   // Add click-to-copy functionality for contact info
   const emailLink = document.querySelector('a[href^="mailto:"]');
   if (emailLink) {
@@ -94,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).then(() => {
-          showNotification('Email copied to clipboard!');
+          console.log('Email copied to clipboard!');
         }).catch(() => {
           fallbackCopyTextToClipboard(email);
         });
@@ -121,18 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const successful = document.execCommand('copy');
       if (successful) {
-        showNotification('Email copied to clipboard!');
+        console.log('Email copied to clipboard!');
       } else {
-        showNotification('Copy failed - please copy manually');
+        console.log('Copy failed - please copy manually');
       }
     } catch (err) {
-      showNotification('Copy not supported - please copy manually');
+      console.log('Copy not supported - please copy manually');
     }
     
     document.body.removeChild(textArea);
   }
 
-  
   // Add accessibility improvements
   listItems.forEach(item => {
     // Make items focusable
@@ -183,13 +163,10 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(section);
   });
   
-  // Performance optimization: removed scroll event handler for asterisk
-  // Asterisk now remains static as requested
-  
   // Add loading states and error handling
   window.addEventListener('load', () => {
     document.body.classList.add('loaded');
-    showNotification('Portfolio loaded successfully!');
+    console.log('Portfolio loaded successfully!');
   });
   
   // Handle errors gracefully
