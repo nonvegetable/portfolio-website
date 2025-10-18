@@ -24,10 +24,6 @@
   background-color: #f5f5f0;
 }
 
-.custom-cursor.inverted {
-  background-color: #f5f5f0;
-}
-
 body {
   font-family: 'JetBrains Mono', monospace;
   background-color: #f5f5f0;
@@ -37,51 +33,82 @@ body {
   overflow-x: hidden;
 }
 
+/* --- Hero Section Styles --- */
+.hero-section {
+  display: flex;
+  min-height: 100vh; /* Full screen height */
+  width: 100%;
+  border-bottom: 1px solid #333; /* MODIFIED: Thinner border */
+}
+
+.hero-left {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Align text to the left */
+  padding: 60px;
+}
+
+.hero-details {
+  max-width: 600px; /* Constrain text width */
+}
+
+.hero-right {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: #e8e8e0; <-- REMOVED: To show grid */
+  border-left: 1px solid #333; /* MODIFIED: Thinner border */
+}
+
+.logo-container {
+  width: 80%;
+  max-width: 600px;
+  padding: 40px;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+/* --- END: Hero Section Styles --- */
+
+
+/* --- Container for content below hero --- */
 .container {
   max-width: 1600px;
   margin: 0 auto;
   padding: 60px 40px;
-  min-height: 100vh;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 60px;
-  border-bottom: 2px solid #333;
-  padding-bottom: 40px;
-}
 
-.logo {
-  display: block;
-  margin: 20px auto 0 auto; /* center horizontally and add top spacing */
-  max-width: 25rem; /* desktop size similar to .asterisk */
-  width: 100%;
-  height: auto;
-}
-
+/* Re-using header text styles for hero text */
 .name {
-  font-size: 2rem;
+  font-size: 7rem; /* Larger for hero */
   font-weight: 700;
   letter-spacing: 2px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 }
 
 .year {
-  font-size: 2rem;
+  font-size: 2.5rem; /* Larger for hero */
   font-weight: 300;
   margin: 20px 0;
 } 
 
 .location {
-  font-size: 1rem;
+  font-size: 1.25rem; /* Larger for hero */
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
 .college {
-  font-size: 1rem;
+  font-size: 1.25rem; /* Larger for hero */
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 10px;
@@ -93,6 +120,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+/* --- End text styles --- */
+
 
 .asterisk {
   font-size: 120px;
@@ -105,7 +134,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
   gap: 80px 60px;
-  margin-top: 60px;
 }
 
 .section {
@@ -245,6 +273,34 @@ body {
   }
 }
 
+/* --- Responsive Hero Styles --- */
+@media (max-width: 1024px) {
+  .hero-section {
+    flex-direction: column;
+    min-height: auto; /* Let height be natural */
+  }
+  
+  .hero-left {
+    flex: 1; /* Reset flex */
+    align-items: center; /* Center text */
+    text-align: center;
+    padding: 60px 40px;
+  }
+  
+  .hero-right {
+    flex: 1; /* Reset flex */
+    border-left: none; /* Remove side border */
+    border-top: 1px solid #333; /* MODIFIED: Thinner border */
+    padding: 60px 40px;
+  }
+  
+  .logo-container {
+    max-width: 400px; /* Control logo size */
+  }
+}
+/* --- END: Responsive Hero Styles --- */
+
+
 @media (max-width: 900px) {
   .main-content {
     grid-template-columns: repeat(2, 1fr);
@@ -266,18 +322,17 @@ body {
     gap: 40px;
   }
   
-  .year {
+  /* Adjust hero text sizes for mobile */
+  .name, .year {
     font-size: 36px;
+  }
+  .location, .college {
+    font-size: 1rem;
   }
   
   .asterisk {
     font-size: 80px;
     margin: 30px 0;
-  }
-
-  /* Logo responsive size for tablet */
-  .logo {
-    max-width: 80px;
   }
   
   .section-title {
@@ -301,17 +356,20 @@ body {
   .container {
     padding: 30px 15px;
   }
-  
-  .name {
-    font-size: 18px;
+
+  .hero-left, .hero-right {
+    padding: 40px 20px;
   }
   
-  .year {
+  /* Adjust hero text sizes for small mobile */
+  .name {
     font-size: 28px;
   }
-  
-  .location, .title {
-    font-size: 13px;
+  .year {
+    font-size: 24px;
+  }
+  .location, .college {
+    font-size: 14px;
   }
   
   .section-title {
@@ -330,11 +388,6 @@ body {
   .asterisk {
     font-size: 60px;
     margin: 20px 0;
-  }
-
-  /* Logo responsive size for small/mobile */
-  .logo {
-    max-width: 60px;
   }
   
   .social-links {
@@ -459,5 +512,27 @@ a:hover {
   .main-content {
     grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+  }
+  
+  /* --- Print styles for hero --- */
+  .hero-section {
+    flex-direction: column;
+    min-height: auto;
+    border-bottom: 2px solid #333;
+  }
+  .hero-left, .hero-right {
+    flex: 1;
+    border: none;
+    padding: 20px;
+    text-align: left;
+  }
+  .hero-right {
+    display: none; /* Hide logo on print */
+  }
+  .name, .year {
+    font-size: 24px;
+  }
+  .location, .college {
+    font-size: 14px;
   }
 }
