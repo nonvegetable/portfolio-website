@@ -22,6 +22,7 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
@@ -30,7 +31,7 @@ body {
   cursor: auto;
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   overflow-x: hidden;
   position: relative;
@@ -146,7 +147,7 @@ a:focus-visible,
 .hero-right::before {
   color: var(--accent);
   content: 'PORTFOLIO / 2026';
-  font: 11px var(--mono);
+  font: 13px var(--mono);
   left: clamp(24px, 4vw, 64px);
   letter-spacing: 0.08em;
   position: absolute;
@@ -164,7 +165,7 @@ a:focus-visible,
   color: var(--accent);
   content: var(--hero-role, 'DATA ENGINEER / BUILDER / SYSTEMS THINKER');
   display: block;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   margin-bottom: 28px;
 }
@@ -208,7 +209,7 @@ a:focus-visible,
 .hero-left::after {
   color: var(--muted);
   content: var(--hero-location, 'Mumbai, India / building useful things with data');
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.04em;
 }
 
@@ -254,7 +255,7 @@ a:focus-visible,
   align-items: baseline;
   border-bottom: 1px solid var(--accent);
   display: flex;
-  font: 500 12px var(--mono);
+  font: 500 15px var(--mono);
   justify-content: space-between;
   letter-spacing: 0.12em;
   margin-bottom: 0;
@@ -267,7 +268,7 @@ a:focus-visible,
   animation: iconPulse 1.8s steps(2, end) infinite;
   color: var(--accent);
   content: '->';
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .list {
@@ -312,7 +313,7 @@ a:focus-visible,
 }
 
 .item-title {
-  font: 500 16px var(--serif);
+  font: 500 1.15rem var(--serif);
   letter-spacing: -0.02em;
   line-height: 1.2;
   text-transform: uppercase;
@@ -327,13 +328,13 @@ a:focus-visible,
 .item-desc {
   color: var(--muted);
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.65;
 }
 
 .item-meta {
   color: var(--accent);
-  font-size: 11px;
+  font-size: 0.9rem;
 }
 
 .data-error {
@@ -359,7 +360,7 @@ a:focus-visible,
 
 .footer-availability {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 0.95rem;
   margin-top: 36px;
 }
 
@@ -372,7 +373,7 @@ a:focus-visible,
 
 .social-link {
   border-bottom: 1px solid var(--accent);
-  font-size: 11px;
+  font-size: 0.95rem;
   letter-spacing: 0.08em;
   padding-bottom: 5px;
   text-transform: uppercase;
