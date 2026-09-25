@@ -1,0 +1,213 @@
+{
+  "site": {
+    "title": "Vighnesh Palande | Data Engineer",
+    "name": "Vighnesh Palande",
+    "role": "DATA ENGINEER @ RBL BANK",
+    "year": "2026",
+    "location": "Mumbai, India / Curious by default",
+    "logoAlt": "Viggi logo"
+  },
+  "sections": [
+    {
+      "title": "About Me",
+      "items": [
+        {
+          "title": "Engineering Background",
+          "description": "Built through coursework, internships, and shipping real projects instead of pretending specs are enough."
+        },
+        {
+          "title": "Always Learning",
+          "description": "Learns by building. Keeps the cycle honest: try, break, fix, improve."
+        },
+        {
+          "title": "Football Mindset",
+          "description": "Football taught discipline, pressure, and how to stay calm when the plan changes mid-match."
+        },
+        {
+          "title": "Curious by Default",
+          "description": "Interested in geography, systems, and the patterns that show up before they become obvious."
+        },
+        {
+          "title": "Pattern Thinking",
+          "description": "Likes finding structure in messy problems. Usually before coffee. Not always by much."
+        },
+        {
+          "title": "Built to Improve",
+          "description": "Not trying to be loud. Just better than the last version."
+        }
+      ]
+    },
+    {
+      "title": "Experience",
+      "items": [
+        {
+          "title": "Data Engineer / RBL Bank",
+          "description": "Building reliable data workflows and engineering systems for banking data and analytics.",
+          "meta": "September 2026 - Present"
+        },
+        {
+          "title": "Technical Consultant Intern / Axe Finance",
+          "description": "Migrated 7 legacy document templates to the Axe Doc Gen engine and deployed 70+ API endpoints on IIS for cross-project integration testing.",
+          "meta": "Jan 2026 - July 2026"
+        },
+        {
+          "title": "Software Developer Intern / Hindalco Industries",
+          "description": "Automated the Toller Blockchain Scrap Receiving process, cutting 16 hours/week of manual labor, and optimized Oracle PL/SQL procedures for FCL lot generation.",
+          "meta": "May - July 2025"
+        },
+        {
+          "title": "Frontend Developer Intern / KJSCE",
+          "description": "Architected a centralized allotment platform, shipping 6 responsive pages and 20+ reusable React components.",
+          "meta": "July - December 2024"
+        },
+        {
+          "title": "Digital Marketing Intern / KJSCE",
+          "description": "Created 120+ posts across social platforms and learned consistency, iteration, and how small improvements add up.",
+          "meta": "June 2023 - July 2024"
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "items": [
+        {
+          "title": "NL2SQL / Enterprise AI Analytics Engine",
+          "description": "A self-correcting, read-only natural-language-to-SQL pipeline with multi-LLM routing.",
+          "meta": "SQLAlchemy / ChromaDB / PostgreSQL / Docker",
+          "url": "https://github.com/nonvegetable/nl2sql"
+        },
+        {
+          "title": "ModNotes Memo / Mod Decision Documentation Tool",
+          "description": "A Devvit app with middleware-based role enforcement for secure, moderator-only private notes.",
+          "meta": "Hono / Redis / React / TypeScript",
+          "url": "https://developers.reddit.com/apps/mod-notes-memo"
+        },
+        {
+          "title": "SSH Terminal Portfolio",
+          "description": "A Dockerized terminal portfolio accessible via SSH, built with Bubble Tea.",
+          "meta": "Go / Bubble Tea / Docker / Azure"
+        },
+        {
+          "title": "Formula Genie / AI Study Assistant",
+          "description": "A full-stack app that extracts formulas from notes and manages usage through subscriptions.",
+          "meta": "React / TypeScript / Supabase / Gemini / Razorpay",
+          "url": "https://formulagenie.vercel.app/"
+        },
+        {
+          "title": "PokeGuess / Pokemon Wordle",
+          "description": "A Wordle-style game with progressive hints and fuzzy matching.",
+          "meta": "React / Python / Flask",
+          "url": "https://pokemon-wordle-murex.vercel.app/"
+        },
+        {
+          "title": "FONO / Phone Memory Game",
+          "description": "A browser game for recalling phone numbers digit by digit.",
+          "meta": "JavaScript / HTML / CSS",
+          "url": "https://phone-number-game.onrender.com/"
+        },
+        {
+            "title": "ASSeRO / Distributed Vehicle Registry",
+            "description": "A lightweight permissioned distributed ledger for vehicle ownership, using randomized validator committees, signed consensus, offline synchronization, and low-bandwidth networking.",
+            "meta": "Go / Distributed Systems / Blockchain / TCP"
+        }
+      ]
+    },
+    {
+      "title": "Skills",
+      "items": [
+        {
+          "title": "Programming Languages",
+          "description": "Go, Java, Python, JavaScript, TypeScript, C, HTML, CSS, SQL, and PL/SQL."
+        },
+        {
+          "title": "Frontend Frameworks",
+          "description": "React.js for clean interfaces and predictable component structure."
+        },
+        {
+          "title": "Backend Technologies",
+          "description": "Node.js, Express.js, Flask, Docker, Azure, and Oracle E-Business Suite."
+        },
+        {
+          "title": "Database Systems",
+          "description": "Oracle Database, MySQL, MongoDB, PostgreSQL, and MS SQL Server."
+        },
+        {
+          "title": "Development Tools",
+          "description": "Git, GitHub, VS Code, PyCharm, Docker, Linux, and MS SQL Server Studio."
+        },
+        {
+          "title": "AI and Productivity Tools",
+          "description": "Cursor, GitHub Copilot, Claude Code, and OpenAI tools."
+        },
+        {
+          "title": "Integration and APIs",
+          "description": "REST APIs, Razorpay, Google APIs, Supabase, and third-party integrations."
+        }
+      ]
+    },
+    {
+      "title": "Hackathons",
+      "items": [
+        {
+          "title": "Codenovate 2024 / Hyderabad",
+          "description": "Best in Category Award for a 24-hour AI healthcare build detecting genetic diseases from DNA samples."
+        },
+        {
+          "title": "Navonmesh 2.0 / Raipur",
+          "description": "Top 6%, placing 30th out of 500+ teams, with a full-stack AI genetic disease detection platform."
+        },
+        {
+          "title": "Parul-Hackverse / Vadodara",
+          "description": "Finalist with an IoT water management system integrating 3+ real-time sensors for automated farm irrigation."
+        }
+      ]
+    },
+    {
+      "title": "Other",
+      "items": [
+        {
+          "title": "Open to Collaboration",
+          "description": "If the problem is interesting, I am usually in."
+        },
+        {
+          "title": "MFA League Winner / 2019",
+          "description": "Football taught resilience, teamwork, and how to keep moving after a bad first half."
+        },
+        {
+          "title": "Self-Hosted Systems",
+          "description": "Set up a personal NAS with a Raspberry Pi and a 1TB drive."
+        },
+        {
+          "title": "Guitar Enthusiast",
+          "description": "Guitar is where consistency gets tested without a compiler yelling back."
+        },
+        {
+          "title": "Geography Buff",
+          "description": "Can point out every country in Europe. Curiosity has a few practical uses."
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "message": "If you are building something interesting, I am probably in.",
+    "availability": "Open to freelance work and collaborations",
+    "links": [
+      {
+        "label": "Email",
+        "url": "mailto:pvighnesh81203@gmail.com"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/nonvegetable"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/vighnesh-palande/"
+      },
+      {
+        "label": "Resume",
+        "url": "https://drive.google.com/file/d/1Pqp1q1_Obk2NPHRo5fv3Ou5Rnh1qk1R2/view?usp=drive_link"
+      }
+    ]
+  }
+}

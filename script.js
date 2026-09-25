@@ -1,176 +1,246 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Custom cursor functionality
-  const cursor = document.querySelector('.custom-cursor');
-  
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  
-  // Change cursor color based on hover elements
-  const interactiveElements = document.querySelectorAll('.list-item, .social-link, a');
-  
-  interactiveElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-      // Check if element has dark background on hover
-      const bgColor = window.getComputedStyle(element).backgroundColor;
-      if (bgColor === 'rgb(51, 51, 51)' || element.matches(':hover')) {
-        cursor.classList.add('inverted');
-      }
-      cursor.style.transform = 'translate(-50%, -50%) scale(1.5)'; // Slightly larger on hover
-    });
-    
-    element.addEventListener('mouseleave', () => {
-      cursor.classList.remove('inverted');
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-  });
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('portfolio.json', { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Could not load portfolio.json (${response.status})`);
+    }
 
-  // Smooth fade in animation
-  document.body.style.opacity = '0';
-  setTimeout(() => {
-    document.body.style.transition = 'opacity 1s ease-in-out';
-    document.body.style.opacity = '1';
-  }, 100);
-  
-  // Add click interactions to list items
+    const portfolio = await response.json();
+    renderPortfolio(portfolio);
+    initializeInteractions();
+  } catch (error) {
+    console.error(error);
+    document.querySelector('#portfolio-content').innerHTML = '<p class="data-error">Portfolio data could not be loaded. Run the site through a local web server.</p>';
+  }
+
+});
+
+function renderPortfolio(portfolio) {
+  const { site, sections, footer } = portfolio;
+
+  document.title = site.title;
+  const nameElement = document.querySelector('[data-name]');
+  nameElement.innerHTML = formatName(site.name);
+  nameElement.dataset.text = site.name.toUpperCase();
+  document.querySelector('[data-year]').textContent = site.year;
+  document.querySelector('.hero-details').style.setProperty('--hero-role', `'${site.role}'`);
+  document.querySelector('.hero-left').style.setProperty('--hero-location', `'${site.location}'`);
+  document.querySelector('.logo').alt = site.logoAlt;
+
+  const content = document.querySelector('#portfolio-content');
+  content.replaceChildren(...sections.map(renderSection));
+
+  document.querySelector('[data-footer-message]').textContent = footer.message;
+  document.querySelector('[data-footer-availability]').textContent = footer.availability;
+  document.querySelector('[data-footer-links]').replaceChildren(...footer.links.map(renderFooterLink));
+}
+
+function formatName(name) {
+  const words = name.trim().split(/\s+/);
+  if (words.length < 2) {
+    return escapeHtml(name);
+  }
+
+  return `${escapeHtml(words.slice(0, -1).join(' '))}<br>${escapeHtml(words.at(-1))}`;
+}
+
+function renderSection(section) {
+  const element = document.createElement('section');
+  element.className = 'section';
+
+  const heading = document.createElement('h2');
+  heading.className = 'section-title';
+  heading.textContent = section.title;
+
+  const list = document.createElement('ul');
+  list.className = 'list';
+  list.append(...section.items.map(renderItem));
+
+  element.append(heading, list);
+  return element;
+}
+
+function renderItem(item) {
+  const element = document.createElement('li');
+  element.className = 'list-item';
+  element.tabIndex = 0;
+
+  const title = document.createElement('span');
+  title.className = 'item-title';
+  title.textContent = item.title;
+
+  const description = document.createElement('span');
+  description.className = 'item-desc';
+  description.textContent = item.description;
+  if (item.meta) {
+    const meta = document.createElement('small');
+    meta.className = 'item-meta';
+    meta.textContent = item.meta;
+    description.append(document.createElement('br'), meta);
+  }
+
+  element.append(title, description);
+
+  if (item.url) {
+    const link = document.createElement('a');
+    link.className = 'project-link';
+    link.href = item.url;
+    link.target = '_blank';
+    link.rel = 'noreferrer';
+    link.setAttribute('aria-label', `${item.title} (opens in a new tab)`);
+    element.prepend(link);
+    link.append(title, description);
+  }
+
+  return element;
+}
+
+function renderFooterLink(linkData) {
+  const link = document.createElement('a');
+  link.className = 'social-link';
+  link.href = linkData.url;
+  link.textContent = linkData.label;
+  if (linkData.url.startsWith('http')) {
+    link.target = '_blank';
+    link.rel = 'noreferrer';
+  }
+  return link;
+}
+
+function initializeInteractions() {
   const listItems = document.querySelectorAll('.list-item');
   listItems.forEach(item => {
+    item.style.setProperty('--row-index', [...item.parentElement.children].indexOf(item));
     item.addEventListener('click', () => {
-      // Simple interaction feedback
       item.style.transform = 'scale(0.98)';
       setTimeout(() => {
         item.style.transform = 'scale(1)';
       }, 150);
     });
-  });
-  
-  // Dynamic year update
-  const yearElement = document.querySelector('.year');
-  const currentYear = new Date().getFullYear();
-  yearElement.textContent = currentYear;
-  
-  // Keep asterisk static (no parallax effect)
-  const asterisk = document.querySelector('.asterisk');
-  
-  // Add staggered animation to list items
-  const typingElements = document.querySelectorAll('.list-item');
-  typingElements.forEach((element, index) => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateX(-20px)';
-    
-    setTimeout(() => {
-      element.style.transition = 'all 0.5s ease';
-      element.style.opacity = '1';
-      element.style.transform = 'translateX(0)';
-    }, index * 50); // Reduced delay for smoother animation with more items
-  });
-  
-  // Add click-to-copy functionality for contact info
-  const emailLink = document.querySelector('a[href^="mailto:"]');
-  if (emailLink) {
-    emailLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      const email = emailLink.href.replace('mailto:', '');
-      
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(email).then(() => {
-          console.log('Email copied to clipboard!');
-        }).catch(() => {
-          fallbackCopyTextToClipboard(email);
-        });
-      } else {
-        fallbackCopyTextToClipboard(email);
-      }
-    });
-  }
-  
-  // Fallback copy function for older browsers
-  function fallbackCopyTextToClipboard(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    
-    // Avoid scrolling to bottom
-    textArea.style.top = '0';
-    textArea.style.left = '0';
-    textArea.style.position = 'fixed';
-    
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    
-    try {
-      const successful = document.execCommand('copy');
-      if (successful) {
-        console.log('Email copied to clipboard!');
-      } else {
-        console.log('Copy failed - please copy manually');
-      }
-    } catch (err) {
-      console.log('Copy not supported - please copy manually');
-    }
-    
-    document.body.removeChild(textArea);
-  }
 
-  // Add accessibility improvements
-  listItems.forEach(item => {
-    // Make items focusable
-    item.setAttribute('tabindex', '0');
-    
-    // Add keyboard interaction
-    item.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
+    item.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
         item.click();
       }
     });
   });
-  
-  // Add smooth scrolling to internal links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth'
-        });
-      }
+
+  const emailLink = document.querySelector('a[href^="mailto:"]');
+  if (emailLink) {
+    emailLink.addEventListener('click', event => {
+      event.preventDefault();
+      copyToClipboard(emailLink.href.replace('mailto:', ''));
     });
-  });
-  
-  // Add intersection observer for scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-  
-  const observer = new IntersectionObserver((entries) => {
+  }
+
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
-  
-  // Observe sections for scroll animation
-  document.querySelectorAll('.section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.section').forEach((section, index) => {
+    section.style.setProperty('--section-index', index);
     observer.observe(section);
+    setTimeout(() => section.classList.add('is-visible'), index * 120 + 300);
   });
-  
-  // Add loading states and error handling
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-    console.log('Portfolio loaded successfully!');
+
+  const revealVisibleSections = () => {
+    document.querySelectorAll('.section:not(.is-visible)').forEach(section => {
+      const bounds = section.getBoundingClientRect();
+      if (bounds.top < window.innerHeight * 0.9 && bounds.bottom > 0) {
+        section.classList.add('is-visible');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', revealVisibleSections, { passive: true });
+  revealVisibleSections();
+
+  initializePixelField();
+}
+
+function initializePixelField() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+
+  const canvas = document.querySelector('.pixel-canvas');
+  const context = canvas.getContext('2d');
+  const pixels = [];
+
+  function resize() {
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = window.innerWidth * ratio;
+    canvas.height = window.innerHeight * ratio;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+  }
+
+  function seed() {
+    pixels.length = 0;
+    const count = Math.min(90, Math.floor((window.innerWidth * window.innerHeight) / 18000));
+    for (let index = 0; index < count; index += 1) {
+      pixels.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() > 0.84 ? 4 : 2,
+        speed: 0.15 + Math.random() * 0.45,
+        phase: Math.random() * Math.PI * 2,
+        gold: Math.random() > 0.72,
+        mint: Math.random() > 0.68
+      });
+    }
+  }
+
+  function draw(time) {
+    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    pixels.forEach(pixel => {
+      pixel.y -= pixel.speed;
+      if (pixel.y < -8) pixel.y = window.innerHeight + 8;
+      const pulse = 0.18 + (Math.sin(time * 0.002 + pixel.phase) + 1) * 0.18;
+      const color = pixel.gold ? '246, 213, 138' : pixel.mint ? '169, 229, 208' : '201, 196, 255';
+      context.fillStyle = `rgba(${color}, ${pulse})`;
+      context.fillRect(Math.round(pixel.x), Math.round(pixel.y), pixel.size, pixel.size);
+    });
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  seed();
+  window.addEventListener('resize', () => {
+    resize();
+    seed();
   });
-  
-  // Handle errors gracefully
-  window.addEventListener('error', (e) => {
-    console.error('An error occurred:', e.error);
-  });
-});
+  requestAnimationFrame(draw);
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Email copied to clipboard!');
+  } catch {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    textArea.remove();
+  }
+}
+
+function escapeHtml(value) {
+  return value.replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  })[character]);
+}

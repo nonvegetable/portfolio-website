@@ -1,0 +1,52 @@
+{
+  "site": {
+    "title": "Your Name | Your Role",
+    "name": "Your Name",
+    "role": "YOUR ROLE / YOUR SPECIALTY",
+    "year": "2026",
+    "location": "Your city / your short tagline",
+    "logoAlt": "Your logo"
+  },
+  "sections": [
+    {
+      "title": "About Me",
+      "items": [
+        {
+          "title": "A short heading",
+          "description": "A short description about you."
+        }
+      ]
+    },
+    {
+      "title": "Experience",
+      "items": [
+        {
+          "title": "Role / Company",
+          "description": "What you worked on.",
+          "meta": "Start - End"
+        }
+      ]
+    },
+    {
+      "title": "Projects",
+      "items": [
+        {
+          "title": "Project name",
+          "description": "What the project does.",
+          "meta": "Technology / Technology",
+          "url": "https://example.com"
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "message": "A short closing message.",
+    "availability": "What you are open to",
+    "links": [
+      {
+        "label": "Email",
+        "url": "mailto:you@example.com"
+      }
+    ]
+  }
+}
